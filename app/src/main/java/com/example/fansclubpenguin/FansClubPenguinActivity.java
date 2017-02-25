@@ -47,11 +47,10 @@ public class FansClubPenguinActivity extends AppCompatActivity  implements View.
                 startActivity(intent);
                 break;
             case R.id.btn_email:
-                Intent emailIntent = getPackageManager().getLaunchIntentForPackage("com.android.email");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"vika.shvets1999@gmail.com"});
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Ваш вопрос");
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "Введите здесь то, что Вас интересует .");
-                startActivity(emailIntent);
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","vika.shvets1999@gmail.com",null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT,"Ваш вопрос");
+                emailIntent.putExtra(Intent.EXTRA_TEXT,"Напишите здесь то, что Вас интересует");
+                startActivity(Intent.createChooser(emailIntent,"Email"));
                 break;
         }
 
